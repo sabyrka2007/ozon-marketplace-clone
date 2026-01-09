@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Ozon Clone',
+  title: 'Ozon Marketplace Clone',
   description: 'An e-commerce platform clone built with Next.js and TypeScript',
 }
 
