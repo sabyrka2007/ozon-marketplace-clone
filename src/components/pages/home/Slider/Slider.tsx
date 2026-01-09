@@ -17,7 +17,7 @@ export const Slider = () => {
           key={slide.id}
           className={cn(
             slide.id === activeSlideId ? 'block' : 'hidden',
-            'rounded-3xl overflow-hidden',
+            'rounded-3xl overflow-hidden my-2',
           )}
         >
           <Image
