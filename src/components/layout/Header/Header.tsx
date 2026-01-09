@@ -1,10 +1,14 @@
 'use client'
 import Image from 'next/image'
 import { LayoutGrid, Search } from 'lucide-react'
+import { headerMenu } from './header-menu.data'
+import Link from 'next/link'
+
+import cn from 'clsx'
 
 export const Header = () => {
   return (
-    <header className="flex items-center gap-4">
+    <header className="flex items-center gap-5">
       <Image
         src="/logo.png"
         alt="Ozon"
@@ -20,9 +24,9 @@ export const Header = () => {
         <span>Каталог</span>
       </button>
 
-      <div className="rounded-xl p-1 flex items-center bg-primary">
+      <div className="rounded-xl p-1 flex items-center grow bg-primary">
         <input
-          className="bg-white rounded-lg px-4 py-1.5"
+          className="grow bg-white rounded-lg px-4 py-1.5"
           type="text"
           placeholder="Искать на Ozon"
           value=""
@@ -35,6 +39,22 @@ export const Header = () => {
         >
           <Search color="#fff" />
         </button>
+      </div>
+
+      <div className="flex gap-5 items-center ml-2">
+        {headerMenu.map((item, index) => (
+          <Link
+            key={item.title}
+            href={item.href}
+            className={cn(
+              'flex items-center text-center flex-col transition-opacity hover:opacity-100 opacity-50',
+              index === 0 && 'opacity-100'
+            )}
+          >
+            <item.icon size={20} />
+            <span className="text-sm font-meduim">{item.title}</span>
+          </Link>
+        ))}
       </div>
     </header>
   )
