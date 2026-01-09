@@ -4,14 +4,14 @@ import cn from 'clsx'
 
 export const TopMenu = () => {
   return (
-    <nav className="flex gap-5 items-center mx-5">
+    <nav className="flex gap-5 items-center px-5 pb-5 bg-white">
       {topMenu.map((item) => (
         <Link
           href={item.href}
           key={item.title}
           className={cn(
             'flex gap-1 items-center transition-all hover:opacity-100 hover:text-primary opacity-50',
-            item.variant === 'fresh' && 'text-green-600 opacity-100',
+            item.variant === 'fresh' && 'text-teal-600 opacity-100 font-medium',
           )}
         >
           {item.icon && <item.icon

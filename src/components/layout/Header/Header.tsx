@@ -9,7 +9,7 @@ import cn from 'clsx'
 
 export const Header = () => {
   return (
-    <header className="flex items-center gap-5 my-3 mx-5">
+    <header className="flex items-center gap-5 py-3 px-5 bg-white">
       <Image
         src="/logo.png"
         alt="Ozon"
