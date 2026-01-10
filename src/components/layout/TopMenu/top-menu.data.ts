@@ -1,5 +1,12 @@
-import { Apple, BriefcaseBusiness, CreditCard, Plane } from 'lucide-react'
+import { Apple, BriefcaseBusiness, CreditCard, LucideIcon, Plane } from 'lucide-react'
 import { PagesConfig } from '@/config/pages.config'
+
+type TopMenuItem = {
+  title: string
+  href: string
+  icon?: LucideIcon
+  variant?: 'fresh'
+}
 
 export const topMenu = [
   {
@@ -43,4 +50,4 @@ export const topMenu = [
     title: 'Сертификаты',
     href: PagesConfig.CERTIFICATES,
   },
-] as const
+] satisfies TopMenuItem[]
