@@ -11,10 +11,11 @@ export const Header = () => {
   return (
     <header className="flex items-center gap-5 py-3 px-5 bg-white">
       <Image
-        src="/logo.png"
+        src="/logo.svg"
         alt="Ozon"
         width={120}
         height={60}
+        unoptimized
       />
 
       <button
