@@ -1,52 +1,57 @@
 'use client'
 
 import { useState } from 'react'
-import { SLIDES } from '@/components/pages/home/Slider/slides.data'
 import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-
-import cn from 'clsx'
+import { SLIDES } from '@/components/pages/home/Slider/slides.data'
 
 export const Slider = () => {
-  const [activeSlideId, setActiveSlideId] = useState(1)
+  const [current, setCurrent] = useState(0)
+  const slidesCount = SLIDES.length
 
-  // TODO: Slider animation
+  const goPrev = () => {
+    setCurrent((prev) => (prev === 0 ? slidesCount - 1 : prev - 1))
+  }
+
+  const goNext = () => {
+    setCurrent((prev) => (prev === slidesCount - 1 ? 0 : prev + 1))
+  }
 
   return (
-    <div className="relative">
-      {SLIDES.map((slide) => (
-        <div
-          key={slide.id}
-          className={cn(
-            slide.id === activeSlideId ? 'block' : 'hidden',
-            'rounded-3xl overflow-hidden my-2',
-          )}
-        >
-          <Image
-            src={slide.image}
-            width={1500}
-            height={300}
-            alt=""
-            className="w-full"
-            draggable={false}
-          />
-        </div>
-      ))}
-      <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between px-4">
+    <div className="relative overflow-hidden rounded-3xl my-2">
+      <div
+        className="flex transition-transform duration-500 ease-out"
+        style={{ transform: `translateX(-${current * 100}%)` }}
+      >
+        {SLIDES.map((slide) => (
+          <div
+            key={slide.id}
+            className="min-w-full select-none"
+          >
+            <Image
+              src={slide.image}
+              width={1500}
+              height={300}
+              alt=""
+              className="w-full"
+              draggable={false}
+              priority
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="absolute inset-0 flex items-center justify-between px-4">
         <button
-          className="bg-white/50  transition hover:bg-white/75 text-black font-bold p-2.5 rounded-lg"
-          onClick={() => setActiveSlideId(
-            activeSlideId === 1 ? SLIDES.length : activeSlideId - 1,
-          )}
+          onClick={goPrev}
+          className="bg-white/50 hover:bg-white/75 transition p-2.5 rounded-lg"
         >
           <ChevronLeft size={20} />
         </button>
 
         <button
-          className="bg-white/50  transition hover:bg-white/75 text-black font-bold p-2.5 rounded-lg"
-          onClick={() => setActiveSlideId(
-            activeSlideId === SLIDES.length ? 1 : activeSlideId + 1,
-          )}
+          onClick={goNext}
+          className="bg-white/50 hover:bg-white/75 transition p-2.5 rounded-lg"
         >
           <ChevronRight size={20} />
         </button>
