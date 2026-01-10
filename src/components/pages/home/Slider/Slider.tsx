@@ -28,6 +28,7 @@ export const Slider = () => {
             height={300}
             alt=""
             className="w-full"
+            draggable={false}
           />
         </div>
       ))}

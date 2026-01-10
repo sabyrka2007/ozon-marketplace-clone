@@ -13,6 +13,7 @@ export default function Home() {
         alt="Banner"
         width={1500}
         height={90}
+        draggable={false}
       />
       <Slider />
     </div>
